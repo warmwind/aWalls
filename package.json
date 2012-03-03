@@ -2,8 +2,9 @@
   "name":"aWalls",
   "version":"0.0.1",
   "dependencies":{
-    "express":"2.5.8",
+    "express":">=2.5.0",
     "coffeekup":"0.3.1",
-    "mongodb":""
+    "mongodb":">=0.9.9",
+    "mongoose": ">=2.5.0"
    }
 }

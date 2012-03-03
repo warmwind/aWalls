@@ -3,9 +3,9 @@ html ->
   head ->
     meta charset: 'utf-8'
 
-    title "This is #{@title} from TW" if @title?
+    title @title 
     
     script src: 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js'
 
   body ->
-    p "#{@mainTitle}"
+    @mainContent
