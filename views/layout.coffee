@@ -9,11 +9,11 @@ html ->
 
   body ->
     table ->
-      for column in @columns 
-        th ->
-          column
+      for column in @columns
+        th -> column
       for doc in @mainContent
         tr ->
-          for key in @keys 
-            td ->
-              doc[key]
+          for key in @keys
+            td -> doc[key]
+          td ->
+            a href: '/story/delete/' + doc['_id'], -> 'remove'

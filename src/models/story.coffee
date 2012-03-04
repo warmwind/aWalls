@@ -13,7 +13,7 @@ Model = mongoose.model('Story', StorySchema)
 class Story
 
   constructor: (@storyNo, @title, @owner, @description) ->
-  create: ->
+  create: (callback) ->
     model = new Model
     model.storyNo = @storyNo
     model.title = @title
@@ -22,9 +22,19 @@ class Story
     model.save (err) ->
       console.log err if err
       console.log "Story was successfully saved" unless err
+    callback()
 
   @findAll: (callback) ->
     Model.find {}, (err, docs) ->
       callback docs
+
+  @delete: (id, callback) ->
+    Model.findById id, (err, story) -> 
+      if (err) 
+        console err
+        res.send 'Post not found'
+      else
+        story.remove (err) ->
+          callback() 
 
 exports.Story = Story

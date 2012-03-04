@@ -23,8 +23,12 @@ app.get '/story/new', (req, res) ->
 
 app.post '/story/create', (req, res) ->
   story = new Story (req.param 'storyNo'), (req.param 'title'), (req.param 'owner'), (req.param 'description')
-  story.create()
-  res.redirect '/'
+  story.create ->
+    res.redirect '/'
+
+app.get '/story/delete/:id', (req, res) ->
+  Story.delete req.params.id, ->
+    res.redirect '/' 
 
 app.listen port, host 
 
