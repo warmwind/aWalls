@@ -8,4 +8,12 @@ html ->
     script src: 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js'
 
   body ->
-    @mainContent
+    table ->
+      for column in @columns 
+        th ->
+          column
+      for doc in @mainContent
+        tr ->
+          for key in @keys 
+            td ->
+              doc[key]

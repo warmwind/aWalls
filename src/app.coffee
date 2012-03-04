@@ -16,7 +16,7 @@ app.register '.coffee', require('coffeekup').adapters.express
 
 app.get '/', (req, res) ->
   Story.findAll (docs) ->
-    res.send docs
+    res.render 'index', mainContent: docs 
   
 app.get '/story/new', (req, res) ->
   res.render 'story/new', {layout: false}

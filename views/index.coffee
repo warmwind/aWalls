@@ -1,3 +1,3 @@
 @title = 'aWalls'
-
-@mainContent = 'This is aWalls'
+@columns = ['STORY NO.', 'TITLE', 'OWNER', 'DESCRIPTION']
+@keys = ['storyNo', 'title', 'owner', 'description']
