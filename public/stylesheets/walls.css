@@ -1,0 +1,16 @@
+.left-column{
+  width: 500px;
+  height: 150px;
+}
+.left {
+  width: 540px;
+  margin-left: -20px;
+}
+.right{
+  width: 240px;
+  float: right;
+  top: 0px;
+}
+.right-column{
+  width: 240px;
+}
