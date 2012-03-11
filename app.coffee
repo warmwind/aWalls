@@ -1,9 +1,9 @@
 express = require('express')
 app = express.createServer()
 app.use(express.bodyParser())
-db = require('./db')
+db = require('./lib/db')
 stylus = require('stylus')
-Story = require('./models/story').Story
+Story = require('./lib/models/story').Story
 mongoose = require('mongoose')
 mongoose.connect db.url
 
@@ -11,8 +11,8 @@ compile = (str, path, fn) ->
   stylus(str).set('filename', path).set('compress', true)
 
 app.use(stylus.middleware({
-  src: "#{__dirname}/../public"
-  dest:  "#{__dirname}/../public"
+  src: "#{__dirname}/public"
+  dest:  "#{__dirname}/public"
   compress: true
   debug: true
   force: true
@@ -20,13 +20,13 @@ app.use(stylus.middleware({
 }))
 
 app.configure 'development', -> 
-    app.use(express.static(__dirname + '/../public'))
+    app.use(express.static(__dirname + '/public'))
     app.use(express.errorHandler({ dumpExceptions: true, showStack: true }))
 
 
 app.configure 'production', ->
   oneYear = 31557600000;
-  app.use(express.static(__dirname + '/../public', { maxAge: oneYear }))
+  app.use(express.static(__dirname + '/public', { maxAge: oneYear }))
   app.use(express.errorHandler())
 
 host = process.env.VCAP_APP_HOST || '127.0.0.1'
