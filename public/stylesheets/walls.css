@@ -5,12 +5,16 @@
 .left {
   width: 540px;
   margin-left: -20px;
+  float: left;
 }
 .right{
   width: 240px;
   float: right;
-  top: 0px;
 }
 .right-column{
   width: 240px;
+}
+
+footer p {
+	text-align: center;
 }
