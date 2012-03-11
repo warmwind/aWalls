@@ -13,20 +13,20 @@ html ->
 
   body ->
     h2 @subject
-    table 'ui-draggable', ->
-      for column in @columns
-        th -> column
-      th -> 
-        a href: 'story/new/', -> 'Add New'
-      for doc in @mainContent
-        tr ->
-          for key in @keys
-            td -> doc[key]
-          td ->
-            a href: '/story/delete/' + doc['_id'], -> 'Remove'
+    h3 ->
+      a href: 'story/new/', -> 'Add New'
 
     for doc in @mainContent
-      div '.ui-draggable.card', ->
-        for key in @keys
-          p "#{key}: #{doc[key]}"
-        a href: '/story/delete/' + doc['_id'], -> 'Remove'
+      div 'card ui-draggable', ->
+        table ->
+          for key in @keys
+            tr ->
+              td 'title', ->
+                "#{key}:"
+              td 'content', ->
+                doc[key]
+          tr ->
+            td ->
+            td ->
+              p ->
+                a href: '/story/delete/' + doc['_id'], -> 'Remove'

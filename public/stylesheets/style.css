@@ -1,3 +1,3 @@
-th,td{border:1px solid #000}
-card{width:100px;height:50px;backgournd:#f00}
-#draggable{width:150px;height:150px;padding:.5em;backgroud:#f00}
+.card{width:200px;height:200px;border:1px solid #000;display:inline-block;margin:5px;background-color:#008000;}
+.card p{margin:10px 0 5px 5px}
+.card td.title{font-weight:bold}
