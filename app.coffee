@@ -14,7 +14,6 @@ app.use(stylus.middleware({
   src: "#{__dirname}/public"
   dest:  "#{__dirname}/public"
   compress: true
-  debug: true
   force: true
   compile:compile
 }))
@@ -41,7 +40,15 @@ app.get '/', (req, res) ->
     res.render 'index', mainContent: docs 
   
 app.get '/story/new', (req, res) ->
-  res.render 'story/new', {layout: false}
+  res.render 'story/new', layout: false, story: new Story, title: 'Create a new story card', button: 'Create', action: '/story/create'
+
+app.get '/story/edit/:id', (req, res) ->
+  Story.find req.params.id, (doc) ->
+    res.render 'story/new', layout: false, story: doc, title: 'Edit story', button: 'Update', action: "/story/update/#{req.params.id}"
+  
+app.post '/story/update/:id', (req, res) ->
+  Story.update req.param.id, req,  ->
+    res.redirect '/'
 
 app.post '/story/create', (req, res) ->
   story = new Story (req.param 'storyNo'), (req.param 'title'), (req.param 'owner'), (req.param 'description')

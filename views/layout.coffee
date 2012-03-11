@@ -29,4 +29,6 @@ html ->
             td ->
             td ->
               p ->
+                a href: '/story/edit/' + doc['_id'], -> 'Edit'
+              p ->
                 a href: '/story/delete/' + doc['_id'], -> 'Remove'

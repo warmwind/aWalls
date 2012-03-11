@@ -8,23 +8,25 @@ html ->
     script src: 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js'
 
   body ->
-    h1 'Create a new story card'
-
-    form action: '/story/create', method: 'post', ->
+    h1 @title
+    form action: @action, method: 'post', ->
       div class: 'field', ->
         label for: 'storyNo', -> 'Story No.: '
-        input id: 'storyNo', name: 'storyNo'
-    
+        if @story.storyNo == undefined
+          input id: 'storyNo', name: 'storyNo'
+        else
+          input id: 'storyNo', name: 'storyNo', value: @story.storyNo, readonly: true
       div class: 'field', ->
         label for: 'title', -> 'Title: '
-        input id: 'title', name: 'title'
+        input id: 'title', name: 'title', value: @story.title
     
       div class: 'field', ->
         label for: 'owner', -> 'Owner: '
-        input id: 'owner', name: 'owner'
+        input id: 'owner', name: 'owner', value: @story.owner
     
       div class: 'field', ->
         label for: 'description', -> 'Description: '
-        textarea id: 'description', name: 'description'
+        textarea id: 'description', name: 'description', ->
+          @story.description
 
-        input type:'submit', name: 'Create'
+        input type: 'submit', name: @button 

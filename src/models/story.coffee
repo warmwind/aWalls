@@ -28,10 +28,26 @@ class Story
     Model.find {}, (err, docs) ->
       callback docs
 
-  @delete: (id, callback) ->
-    Model.findById id, (err, story) -> 
+  @find: (id, callback) ->
+    Model.findById id, (err, story) ->
       if (err) 
-        console err
+        console.log err
+        res.send 'Post not found'
+      else
+        callback story
+
+  @update: (id, req, callback) ->
+    Model.update storyNo: req.param 'storyNo', {title: req.param('title'), owner: req.param('owner'), description: req.param('description')}, {}, (err, numAffected) ->
+      if (err)
+        console.log err
+      else
+        console.log "#{numAffected} row(s) affected"
+        callback()
+
+  @delete: (id, callback) ->
+    Model.findById id, (err, story) ->
+      if (err) 
+        console.log err
         res.send 'Post not found'
       else
         story.remove (err) ->

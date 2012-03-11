@@ -25,7 +25,6 @@
     src: "" + __dirname + "/public",
     dest: "" + __dirname + "/public",
     compress: true,
-    debug: true,
     force: true,
     compile: compile
   }));
@@ -65,7 +64,29 @@
 
   app.get('/story/new', function(req, res) {
     return res.render('story/new', {
-      layout: false
+      layout: false,
+      story: new Story,
+      title: 'Create a new story card',
+      button: 'Create',
+      action: '/story/create'
+    });
+  });
+
+  app.get('/story/edit/:id', function(req, res) {
+    return Story.find(req.params.id, function(doc) {
+      return res.render('story/new', {
+        layout: false,
+        story: doc,
+        title: 'Edit story',
+        button: 'Update',
+        action: "/story/update/" + req.params.id
+      });
+    });
+  });
+
+  app.post('/story/update/:id', function(req, res) {
+    return Story.update(req.param.id, req, function() {
+      return res.redirect('/');
     });
   });
 
