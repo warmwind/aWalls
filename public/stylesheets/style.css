@@ -1,3 +1,4 @@
-.card{width:200px;height:200px;border:1px solid #f00;display:inline-block;margin:5px;background-color:#008000;}
+.card{width:200px;height:200px;border:1px solid #f00;display:inline-block;margin:5px;background-color:#008000;cursor:move;}
 .card p{margin:10px 0 5px 5px}
 .card td.title{font-weight:bold}
+.main-content h2 span{margin-left:10px}

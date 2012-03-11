@@ -11,10 +11,11 @@ html ->
     script src: '../scripts/draggable.coffee', type: 'text/coffeescript'
 
 
-  body ->
-    h2 @subject
-    h3 ->
-      a href: 'story/new/', -> 'Add New'
+  body 'main-content', ->
+    h2 ->
+      span @subject
+      span -> 
+        a href: 'story/new/', -> 'Add New'
 
     for doc in @mainContent
       div 'card ui-draggable', ->
