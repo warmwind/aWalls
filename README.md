@@ -8,7 +8,3 @@ Coffee Script
 Stylus
 MongoDB
 Mongoose
-
-
-1
-2
